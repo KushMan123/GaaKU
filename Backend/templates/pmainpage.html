@@ -1,0 +1,65 @@
+{% extends 'base.html' %} {% load static %} {% block products %}
+<div class="product-container">
+  {% for object in bought %}
+  <div class="product-card">
+    <a href="{{ object.product.get_absolute_url }}">
+    <div class="badge">Sold-out</div>
+    <div class="product-tumb">
+      <img src="{{object.productimg.url}}" alt="" class="model" />
+    </div>
+    <div class="product-details">
+      <span class="product-catagory">{{object.productcategory}}</span>
+      <h4><a href="{{ product.get_absolute_url }}">{{object.productname}}</a></h4>
+      <div class="product-bottom-details">
+        <div class="product-price"> Rs. {{object.productprice}}</div>
+        <div class="product-links">
+          <a href="{{ object.product.get_absolute_url }}"
+            ><i class="fa fa-heart"></i
+          ></a>
+        </div>
+      </div>
+    </a>
+    </div>
+  </div>
+  {% endfor %}
+
+  {% for product in products %}
+  <div class="product-card">
+    <a href="{{ product.get_absolute_url }}">
+    {% if product.negotiation %}
+    <div class="badge">Negotiable</div>
+    {% else %}
+    <div class="badge">Non-Negotiable</div>
+    {% endif %}
+    <div class="product-tumb">
+      <img src="{{product.img.url}}" alt="" class="model" />
+    </div>
+    <div class="product-details">
+      <span class="product-catagory">{{product.category}}</span>
+      <h4><a href="{{ product.get_absolute_url }}">{{product.name }}</a></h4>
+      <div class="product-bottom-details">
+        <div class="product-price">Rs.{{product.price}}</div>
+        <div class="product-links">
+          <a href="{{ product.get_absolute_url }}"
+            ><i class="fa fa-heart"></i
+          ></a>
+        </div>
+      </div>
+    </a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<div class="subscribe-container">
+  <div class="sub-col1">
+    <h1>Looking for something but isn't available right now?</h1> You can enter the product's name and get notified if someone posts that product.
+  </div>
+  <div class="sub-col2">
+    <form method='post' action=" {% url 'lookingfor' %} ">
+      {% csrf_token %}
+        <input name='product-name' type='text' placeholder='Eg. drafter' id="footer-email">
+        <input type='submit' value='Submit' id="footer-email-btn">
+      </form>
+  </div>
+</div>
+{% endblock products %}

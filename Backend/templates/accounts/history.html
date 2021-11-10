@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block link %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/notification.css' %}">
+{% endblock %}
+
+
+{% block notification %}
+<div class="history-container" style="margin:150px"></div>
+{% if bought %}
+    </div>
+   <h1 align="center" color="purple">Bought products</h1>
+    <div class='notif-container'>
+    <ul class="notif-list">
+        {% for b in bought %}
+            <li>
+            You bought {{b.product}} from {{b.productuser}} on {{b.timestamp | date}}
+            </li>
+        {% endfor %}
+    <ul>
+    </div>
+{% endif %}
+
+{% if sold %}
+    <h1 align="center" color="purple">Sold products</h1>
+    <div class='notif-container'>
+    <ul class="notif-list">
+        {% for s in sold %}
+            <li>
+            You sold {{s.product}} to {{s.sold_to}} on {{s.timestamp | date}}
+            </li>
+        {% endfor %}
+    <ul>
+    </div>
+{% endif %}
+</div>
+{% endblock %}
+

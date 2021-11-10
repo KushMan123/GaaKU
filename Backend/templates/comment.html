@@ -1,0 +1,12 @@
+
+
+{% if comments %}
+    {% for c in comments %}
+    {% if c.reply is None %}
+        {{c.content}} by {{c.user}} on {{c.timestamp}}<br>
+    {% else %}
+        Reply: {{c.content}} by {{c.user}} on {{c.timestamp}}<br>
+    {%endif%}
+    {% endfor %}
+    
+{% endif %}

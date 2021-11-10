@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" name="viewport" 
+        content= "width=device-width, initial-scale=1.0"> 
+	<title>Prdouct Additon | GaaKU</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="product.css">
+</head>
+<body>
+	<div class="add-wrapper">
+			<div class="registration-title">
+				Give Your Product Information
+			</div>
+			<div class="form">
+				<div class="input-field">
+					<div class="form-group">
+						<label>Username</label>
+						<div class>
+							<input type="text" class="textinput"></input>
+						</div>
+					</div>
+				</div>
+				<div class="input-field">
+					<div class="form-group">
+						<label>Product Name</label>
+						<div class>
+							<input type="text" class="textinput"></input>
+						</div>
+					</div>
+				</div>
+				<div class="input-field">
+					<div class="form-group">
+						<label class="no-margin">Product Category</label>
+						<div class>
+							<select>
+								<option value="">-----Categoties-----</option>
+								<option value="Electronics">Electronics</option>
+								<option value="Homes and Furniture">Homes and Furniture</option>
+								<option value="Sports">Sports</option>
+								<option value="Education Materials">Education Materials</option>
+								<option value="Other Accessories">Other Accessories</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="input-field">
+					<div class="form-group">
+						<label>Price</label>
+						<div class>
+							<input type="number" class="textinput"></input>
+						</div>
+					</div>
+				</div>
+				<div class="input-field">
+					<div class="form-group">
+						<label>Product Description</label>
+						<div class>
+							<textarea class="textarea"></textarea>
+						</div>	
+					</div>
+				</div>
+				<div class="input-field">
+					<label>Product Image</label>
+					<input type="file" id="file" accept="image/*"></input><br>
+					<label for="file" class="alt-btn"> <i class="far fa-image"></i>Choose a Photo</label>
+					<!-- <img src="#" id="product-image" alt="Image" height=200 width=100> -->
+				</div>
+				<div class="input-field">
+					<img src="https://omegamma.com.au/wp-content/uploads/2017/04/default-image-720x530.jpg" alt="p-image" id="p-image">
+				</div>
+				<div class="input-field">
+					<label id="p-name">Image</label>
+				</div>
+				<div class="input-field terms">
+					<label class="check">
+						<input type="checkbox">
+						<span class="checkmark"></span>
+					</label>
+					<p>
+						Is Product Price Negotiable?
+					</p>
+				</div>
+				<div class="input-field">
+					<div class="form-group">
+						<label>Contact Number</label>
+						<div class>
+							<input type="number" class="textinput"></input>
+						</div>
+					</div>
+				</div>
+				<div class="input-field terms">
+					<label class="check">
+						<input type="checkbox">
+						<span class="checkmark"></span>
+					</label>
+					<p>
+						Is It Urgent to Sell Your Product?
+					</p>
+				</div>
+				<div class="input-field">
+					<input type="submit"  value="Register" class="reg-btn"></input>
+				</div>
+			</div>
+	</div>
+
+	<button class="back-btn"><a href="#">Back</a></button>
+
+	<script type="text/javascript" src="product.js"></script>
+</body>
+</html>

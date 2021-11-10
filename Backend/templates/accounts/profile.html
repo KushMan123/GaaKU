@@ -1,0 +1,308 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Profile| GaaKU</title>
+	<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
+
+</head>
+<body>
+	<div class="wrapper">
+      <nav class="nav">
+        <ul class="nav__list" role="menubar">
+          <li class="nav__item nav__item--isActive">
+            <div class="tool-tip">
+            	<a
+	              href="{% url 'home' %}"
+	              class="nav__link focus--box-shadow"
+	              role="menuitem"
+	            >
+	            <i class="fas fa-home"></i>
+	            </a>
+	            <span class="tooltip-text">Home</span>
+            </div>
+          </li>
+          <li class="nav__item nav__item--isActive">
+            <div class="tool-tip">
+            	<a
+	              href="{% url 'pmainpage' %}"
+	              class="nav__link focus--box-shadow"
+	              role="menuitem"
+	            >
+	            <i class="fab fa-product-hunt"></i>
+	            </a>
+	            <span class="tooltip-text">Product</span>
+            </div>
+          </li>
+          <li class="nav__item nav__item--isActive">
+            <div class="tool-tip">
+            	<a
+	              href="{% url "about" %}"
+	              class="nav__link focus--box-shadow"
+	              role="menuitem"
+	            >
+	            <i class="fas fa-question-circle"></i>
+	            </a>
+	            <span class="tooltip-text">About</span>
+            </div>
+          </li>
+          <li class="nav__item nav__item--isActive">
+            <div class="tool-tip">
+            	<a
+	              href="{% url 'logout' %}"
+	              class="nav__link focus--box-shadow"
+	              role="menuitem"
+	            >
+	            <i class="fas fa-power-off"></i>
+	            </a>
+	            <span class="tooltip-text">Log-out</span>
+            </div>
+          </li>
+      </ul>
+  </nav>
+  <main class="main">
+    {% if messages %}
+	  {% for message in messages %}
+	    <div class="alert alert-{{ message.tags }}">
+		  {{ message }}
+	    </div>
+	  {% endfor %}
+ 	  {% endif %}
+    <header class="header">
+      <div class="header__wrapper">
+        <a href="{% url 'sell' %}" class="search">
+        	<i class="fas fa-plus"></i>Add your products
+        </a>
+        <div class="profile">
+          <button class="profile__button">
+            <span class="profile__name">{{ user.username }}</span>
+            <img
+              class="profile__img"
+              src="{{ user.profile.image.url }}"
+              alt="Profile picture"
+              loading="lazy"
+            />
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <section class="section" id="MyProducts">
+          <header class="section__header">
+            <a href="{% url 'myproducts' user.username %}"><h2 class="section__title"> My Products</h2></a>
+          </header>
+          <ul class="project">
+            {% for product in products %}
+            <li class="project__item">
+              <a href="{% url 'sell-detail' product.pk %}" class="project__link focus--box-shadow">
+                <div class="project__wrapper">
+                 	<div class="product-image">
+                 		<img src="{{product.img.url}}">
+                 	</div>
+                 	<div class="product-name product-text">
+                    {{product.name}}
+                 	</div>
+                 	<div class="product-price product-text">
+                 		Rs. {{product.price}}
+                 	</div>
+                 	<div class="product-date product-text">
+                    {{product.category}}
+                 	</div>
+                 	<div class="product-negotiable product-text">
+                    {% if product.item.negotiation %}
+                    <div class="badge">Negotiable</div>
+                    {% else %}
+                    <div class="badge">Non-Negotiable</div>
+                    {% endif %}
+                 	</div>
+                 	<div class="product-info">
+                 		<i class="fas fa-ellipsis-h"></i>
+                 	</div>
+                </div>
+              </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section class="section" id="MyWishlist">
+          <header class="section__header">
+            <h2 class="section__title" >My WishList</h2>
+          </header>
+          <ul class="project">
+          {% for product in items %}
+            <li class="project__item">
+              <a href="{% url 'sell-detail' product.item.pk %}" class="project__link focus--box-shadow">
+                <div class="project__wrapper">
+                 	<div class="product-image">
+                 		<img src="{{product.item.img.url}}">
+                 	</div>
+                 	<div class="product-name product-text">
+                    {{product.item.name}}
+                 	</div>
+                 	<div class="product-price product-text">
+                 		Rs. {{product.item.price}}
+                 	</div>
+                 	<div class="product-date product-text">
+                    {{product.item.category}}
+                 	</div>
+                 	<div class="product-negotiable product-text">
+                    {% if product.item.negotiation %}
+                    <div class="badge">Negotiable</div>
+                    {% else %}
+                    <div class="badge">Non-Negotiable</div>
+                    {% endif %}
+                 	</div>
+                 	<div class="product-info">
+                 		<i class="fas fa-ellipsis-h"></i>
+                 	</div>
+                </div>
+              </a>
+            </li>
+          {% endfor %}
+          </ul>
+    </section>
+
+    <section class="section" id="MyHistory">
+          <header class="section__header">
+            <h2 class="section__title">My History</h2>
+          </header>
+          <ul class="project">
+            {% if bought %}
+            <h1 align="center" color="purple">Bought products</h1>
+              <li class="project__item">
+                {% for b in bought %}
+                <a href="#" class="project__link focus--box-shadow">
+                  <div class="project__wrapper history-section">
+                    <p>You bought {{b.productname}} from {{b.productuser}} on {{b.timestamp | date}}</p>
+                  </div>
+                </a>
+                {% endfor %}
+              </li>
+            {% endif %}
+            {% if sold %}
+            <h1 align="center" color="purple">Sold products</h1>
+              <li class="project__item">
+                {% for s in sold %}
+                <a href="#" class="project__link focus--box-shadow">
+                  <div class="project__wrapper history-section">
+                    <p>You sold {{s.productname}} to {{s.sold_to}} on {{s.timestamp | date}}</p>
+                  </div>
+                </a>
+                {% endfor %}
+              </li>
+            {% endif %}
+
+        </ul>
+    </section>
+</main>
+<aside class="aside">
+        <section class="section">
+        	<h1>My Profile</h1>
+          <div class="profile-main">
+            <button
+              class="profile-main__setting focus--box-shadow"
+              type="button"
+            >
+              <img
+                class="profile-main__photo"
+                src="{{ user.profile.image.url }}"
+                alt="Profile photo"
+              />
+            </button>
+            <h1 class="profile-main__name">{{ user.username }}  <i class="far fa-edit"></i> </h1>
+            <div class="profile-main__name">{{user.profile.first_name}} {{user.profile.last_name}}</div>
+            <div class="profile-main__name">{{ user.email }}</div>
+            <div class="profile-main__name">{{user.profile.phone_no}}</div>
+          </div>
+          <ul class="statistics">
+            <li class="statistics__entry">
+              <a class="statistics__entry-description" href="#MyProducts">My Products</a
+              ><span class="statistics__entry-quantity"></span>
+            </li>
+            <li class="statistics__entry">
+              <a class="statistics__entry-description" href="#MyWishlist">My WishList</a
+              ><span class="statistics__entry-quantity"></span>
+            </li>
+            <li class="statistics__entry">
+              <a class="statistics__entry-description" href="#MyHistory">History</a>
+            </li>
+          </ul>
+          <div class="banner" style="background-image: url('{% static "image/81744.jpg" %}')">
+            {% if not subscribed %}
+                  <h3 class="banner__title">Subscribe to Get Updates</h3>
+                  <p class="banner__description">Get Updated with GaaKU</p>
+                  <a href="{% url 'subscribe-update' %}"><button class="banner__button" type="button">
+                    Subscribe
+                  </button></a>
+                {% else %}
+                <h3 class="banner__title">Unsubscribe  with GaaKU</h3>
+                  <p class="banner__description">If you don't want to recieve updates in future, please Unsubscribe.</p>
+                  <a href="{% url 'subscribe-update' %}"><button class="banner__button" type="button">
+                    Unsubscribe
+                  </button></a>
+                {% endif %}
+          </div>
+        </section>
+      </aside>
+      </div>
+	</div>
+	<div class="modal">
+		<div class="add-wrapper">
+			<i class="fas fa-times"></i>
+			<div class="registration-title">
+				Your Profile Information
+			</div>
+			<form class="form" action="{% url "profile" %}" method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				 <div class="input-field">
+					<label>First Name</label>
+				    {{u_form.first_name}}
+				</div>
+          
+        <div class="input-field">
+					<label>Last Name</label>
+				    {{u_form.last_name}}
+				</div>
+				<div class="input-field">
+					<label>Phone Number</label>
+					{{p_form.phone_no}}
+				</div>
+				<div class="input-field">
+					<label>Email</label>
+					{{u_form.email}}
+				</div>
+				<div class="input-field">
+					<label>Upload new Image</label>
+					<input type="file" id="file" accept="" name="image"></input>
+					<label for="file" class="alt-btn"> <i class="far fa-image"></i>Choose a Photo</label><br>
+					 <!-- <img src="{{ user.profile.image.url }}" id="product-image" alt="Image" height=200 width=100>  -->
+				</div>
+				<div class="input-field">
+					<img src="{{ user.profile.image.url }}" alt="p-image" id="p-image">
+				</div>
+				<div class="input-field">
+					<label id="p-name">Your Current Profile Image</label>
+				</div> 
+				<div class="input-field">
+					<input type="submit"  value="Update" class="reg-btn"></input>
+				</div>
+			</form>
+		</div>
+    </div>
+      
+<script type="text/javascript" src="{% static 'javascript/profile.js' %}"></script>
+</body>
+</html>

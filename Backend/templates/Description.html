@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block link %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/comment.css' %}">
+{% endblock %}
+
+
+{% block Description %}
+
+<div class="cover-container">
+    {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+    <div class="flexbox padding">
+          <div class="col2 text-alignment" style="flex-basis: 55%">
+              <h1 class="cover-title">{{object.name}}</h1>
+              <p class="cover-text">
+              <h2><strong>Product-description</strong></h2>
+                <span>{{object.description}}</span>
+                <h3>Price :{{object.price}}</h3>
+                {% if user.is_authenticated%}
+                <h3>Seller name :{{object.user}}</h3>
+                <h3>Seller email :{{object.user.profile.email}}</h3>
+                <h3>Seller phone no : {{object.user.profile.phone_no}}</h3>
+                {% endif %}
+            </p>
+            <div class="view-btn">
+                <a href="{{object.get_add_to_whishlist_url}}" class="button">Add to whilist <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            </div>
+          </div>
+          <div class="col2 image-scroll" style="flex-basis: 35%">
+            <img src="{{object.img.url}}" alt="" class="cover-image firs"  > 
+         
+        </div>
+    </div>
+</div>
+    
+<div class='comment-section'>
+    <form action='' method='POST'>
+    {% csrf_token %}
+        <div class='row'>
+            <div class="col-75">
+                <textarea id="subject" name="comment-content" placeholder="Write a comment... (Your comments are only visible to you and the product's owner. Its like a mini messaging system ;))" style="height:50px"></textarea>
+            </div>
+            <div class="row">
+                <input type="submit" value="Comment">
+            </div>
+        </div>
+    </form>
+    <br>
+    {% if comments %}
+        {% for c in comments %}
+            <div class='cmnt-box'>
+                {% if c.reply is None %}
+                <img height="40px" width="40px" src={{c.user.profile.image.url}}>
+                    {{c.content}} by {{c.user}} {{c.timestamp | timesince}} ago<br>
+                    <br>
+                {% endif %}
+                {% for reply in replies %}
+                    {% if reply.reply.id == c.id %}
+                    <div class='reply-sec'>
+                        ----->
+                        <img height="40px" width="40px" src={{reply.user.profile.image.url}}>
+                        <strong>{{reply.content}}</strong> by {{reply.user}} {{reply.timestamp | timesince}} ago<br><br>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+                    <form action='' method='POST'>
+                        {% csrf_token %}
+                        <div class='row'>
+                            <div class="col-75">
+                                <textarea id = 'subject' name='comment-content' placeholder='Reply...' style="height:45px"></textarea>
+                                <input type='hidden' name='Commentid' value='{{c.id}}'>
+                            </div>
+                            <div class="row">
+                                <input type="submit" value="Reply">
+                            </div>
+                        </div>
+                    </form>
+            </div>
+        {% endfor %}
+        
+    {% endif %}
+</div>
+{% endblock Description %}

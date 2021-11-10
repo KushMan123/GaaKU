@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% load static %} {% block products %}
+<div style="margin: 150px auto 25px ">
+  <h2 class="userheader" style="font-size: 50px; font-style: italic">
+    {{view.kwargs.username}}'s Products
+  </h2>
+</div>
+
+<div class="product-container">
+  {% for product in object_list %}
+  <div class="product-card">
+    {% if product.negotiation %}
+    <div class="badge">Negotiable</div>
+    {% else %}
+    <div class="badge">Non-Negotiable</div>
+    {% endif %}
+    <div class="product-tumb">
+      <img src="{{product.img.url}}" alt="" class="model" />
+    </div>
+    <div class="product-details">
+      <span class="product-catagory">{{product.category}}</span>
+      <h4><a href="{% url 'sell-detail' product.pk %}">{{product.name}}</a></h4>
+      <div class="product-bottom-details">
+        <div class="product-price">Rs.{{product.price}}</div>
+        <div class="product-links">
+        </div>
+      </div>
+    </div>
+  </a>
+</li>
+{% endfor %} {% endblock products %}

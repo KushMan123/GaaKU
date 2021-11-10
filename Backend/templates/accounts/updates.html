@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block link %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/notification.css' %}">
+{% endblock %}
+
+{% block notification %}
+    <h1 align="center" color="purple">Updates</h1>
+    {% if products %}
+    <div class='notif-container'>
+    <ul class="notif-list">
+        
+    <ul>
+    </div>
+    {% endif %}
+
+{% endblock %}

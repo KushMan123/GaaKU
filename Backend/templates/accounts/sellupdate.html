@@ -1,0 +1,358 @@
+{%  load static %} {% load crispy_forms_tags %}
+
+<html>
+<head>
+	<meta charset="utf-8" name="viewport" 
+        content= "width=device-width, initial-scale=1.0"> 
+	<title>Prdouct Additon | GaaKU</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;1,300;1,400&display=swap');
+
+body{
+	margin:0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Montserrat',sans-serif;
+	background: url(1601026.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+a{
+	text-decoration: none;
+	color: white;
+}
+
+.add-wrapper{
+	max-width: 500px;
+	width: 100%;
+	background: white;
+	margin: 20px auto;
+	padding: 30px;
+	box-shadow: 6px 6px 6px rgba(0,0,0,0.5);
+	border-radius: 30px
+}
+
+#p-image{
+	margin:auto;
+	width: 100%;
+	height: 250px;
+	background: grey;
+	object-fit: cover;
+}
+
+#p-name{
+	width: 100%;
+	text-align: center;
+}
+
+.add-wrapper .registration-title{
+	font-size: 28px;
+	font-weight: bold;
+	margin-bottom: 45px;
+	color: #592998;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.add-wrapper.form{
+	width: 100%;
+}
+
+.add-wrapper .form .input-field .form-group{
+	margin-bottom: 15px;
+	display: flex;
+	align-items: center;
+  justify-content: center;
+}
+
+.add-wrapper .form .input-field .form-group label{
+	width: 200px;
+	color: #757575;
+	margin-right: 10px;
+	font-size:14px;
+	flex-basis: 30%;
+}
+
+.add-wrapper .form .input-field .form-group div{
+	width: 200px;
+	color: #757575;
+	margin-right: 10px;
+	font-size:14px;
+	flex-basis: 60%;
+}
+.add-wrapper .form .input-field .no-margin{
+	margin-right: 0px;
+}
+
+
+
+.add-wrapper .form .input-field .form-group div .numberinput,
+.add-wrapper .form .input-field .form-group div .textinput,
+.add-wrapper .form .input-field .form-group div .textarea{
+	width: 100%;
+	outline:none;
+	border: 1px solid #d5dbd9;
+	font-size: 15px;
+	padding: 8px 10px;
+	border-radius: 3px;
+	transition: all 0.3 ease;
+}
+
+.add-wrapper .form .input-field .form-group .textarea{
+	resize: none;
+	height: 125px;
+}
+.add-wrapper .form .input-field .form-group .custom-select{
+	position: relative;
+	width: 100%;
+}
+/*.add-wrapper .form .input-field .custom-select label{
+	flex-basis: 30%;
+}
+.add-wrapper .form .input-field .custom-select div{
+	width: 200px;
+	color: #757575;
+	margin-right: 10px;
+	font-size:14px;
+	flex-basis: 60%;
+}*/
+
+.add-wrapper .form .input-field  .form-group div select{
+	-webkit-appearance:none;
+	appearance:none;
+	border: 1px solid #d5dbd9;
+	width: 100%;
+	height: 100%;
+	padding: 8px 10px;
+	border-radius: 3px;
+	outline: none;
+}
+
+/*.add-wrapper .form .input-field .custom-select:before{
+	content: "";
+	position: absolute;
+	top: 12px;
+	right: 10px;
+	border:8px solid;
+	border-color: #d5dbd9 transparent transparent transparent;
+	pointer-events: none;
+}*/
+
+.add-wrapper .form .input-field .form-group .textinput:focus,
+.add-wrapper .form .input-field .form-group .numberinput:focus,
+.add-wrapper .form .input-field .form-group .textarea:focus,
+.add-wrapper .form .input-field .form-group div select:focus{
+	border: 1px solid #592998;
+}
+
+.add-wrapper .form .input-field .form-group p{
+	font-size: 14px;
+	color: #757575;
+}
+
+.add-wrapper .form .input-field .check{
+	width: 15px;
+	height: 15px;
+	position: relative;
+	display: block;
+	cursor: pointer;
+}
+
+.add-wrapper .form .input-field .check input[type="checkbox"]{
+	position: absolute;
+	top:0;
+	left: 0;
+	opacity: 0;
+}
+.add-wrapper .form .input-field .check .checkmark{
+	width: 15px;
+	height: 15px;
+	border:1px solid #592998;
+	display: block;
+	position: relative;
+	/*background: #fec107;*/
+}
+
+.add-wrapper .form .input-field .check .checkmark:before{
+	content: "";
+	position: absolute;
+	top:2.5px;
+	left: 2px;
+	width: 5px;
+	height: 2px;
+	border: 2px solid;
+	border-color: transparent transparent #fff #fff;
+	transform: rotate(-45deg);
+	display: none;
+}
+
+.add-wrapper .form .input-field .check input[type="checkbox"]:checked~.checkmark{
+	background: #592998;
+}
+.add-wrapper .form .input-field .check input[type="checkbox"]:checked~.checkmark:before{
+	display: block;
+}
+
+.add-wrapper .form .input-field .reg-btn{
+	width:100%;
+	padding: 8px 10px;
+	font-size: 15px;
+	border: 0;
+	background: #592998;
+	color: white;
+	cursor:pointer;
+	border-radius: 3px;
+	outline: none;
+	transition: transform 0.2s ease;
+}
+
+.add-wrapper .form .input-field:last-child{
+	margin-bottom: 0;
+}
+
+.add-wrapper .form .input-field .reg-btn:hover, 
+.add-wrapper .form .input-field .alt-btn:hover,
+.back-btn:hover{
+	transform: scale(1.01);
+	background: #ffd658;
+}
+
+.add-wrapper .form .input-field  input[type="file"]{
+	display: none;
+}
+
+.add-wrapper .form .input-field .alt-btn{
+	color: white;
+	height: 60px;
+	width:100%;
+	background: #592998;
+	font-size: 20px;
+	display: flex;
+	justify-content: center;
+	align-items:center;
+	border-radius: 3px;
+	transition: transform 0.2s ease;
+}
+
+.add-wrapper .form .input-field .alt-btn .far{
+	margin-right: 10px;
+}
+
+.back-btn{
+	width: 100px;
+	margin: 20px;
+	padding: 8px 10px;
+	font-size: 15px;
+	border: 0;
+	background: #592998;
+	color: white;
+	cursor:pointer;
+	border-radius: 3px;
+	outline: none;
+	transition: transform 0.2s ease;
+	position: absolute;
+	top:0;
+	left: 0;
+	line-height: initial;
+}
+
+#id_sub_category1{
+	display: none;
+}
+
+#id_sub_category2{
+	display: none;
+}
+
+@media screen and (max-width: 420px){
+	.add-wrapper .form .input-field .form-group{
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	.add-wrapper .form .imput-field .form-group label{
+		margin-bottom: 5px;
+	}
+	.wrapper .form .imput-field .form-group .terms{
+		flex-direction: row;
+	}
+}
+
+#div_id_img>div{
+  visibility: hidden;
+}
+
+.back-btn>i{
+  margin-right: 10px;
+}
+
+</style>
+</head>
+<body style="background: url('{% static "image/bg-01.jpg" %}') center/cover no-repeat">
+	<div class="add-wrapper">
+			<div class="registration-title">
+				Give Your Product Information
+			</div>
+        <form method="POST" enctype="multipart/form-data" class="form">
+            {% csrf_token %}
+              <div class="input-field">
+                {{ form.name|as_crispy_field }}
+              </div>
+              <div class="input-field">
+                <div class="custom-select">
+                  {{ form.category|as_crispy_field }}
+                </div>
+              </div>
+              <div class="input-field">
+                <div class="custom-select">
+                  {{ form.sub_category1|as_crispy_field }}
+                </div>
+              </div>
+              <div class="input-field">
+                <div class="custom-select">
+                  {{ form.sub_category2|as_crispy_field }}
+                </div>
+              </div>
+              <div class="input-field">
+                {{ form.price|as_crispy_field }}
+              </div>
+              <div class="input-field">
+                  {{ form.description|as_crispy_field }}
+              </div>
+              <div class="input-field">
+				{{ form.img|as_crispy_field }}
+				<label for="id_img" class="alt-btn"> <i class="far fa-image"></i>Choose a Photo</label>
+			  </div>
+			  <br>
+              <div class="input-field">
+				<img src="{{ product.img.url }}" alt="p-image" id="p-image">
+        </div>
+        <div class="input-field">
+          <div class="form-group">
+            <label id="p-name">Your Current Product Image</label>
+          </div>
+					
+				</div> 
+			  <br>
+              <div class="input-field">
+                {{ form.negotiation|as_crispy_field }}
+              </div>
+              <div class="input-field">
+                {{ form.contact_info|as_crispy_field }}
+              </div>
+              <div class="input-field terms">
+                {{ form.urgent|as_crispy_field }}
+              </div>
+              <div class="input-field">
+                <input type="submit"  value="Add your Product" class="reg-btn"></input>
+            </div>
+          </form>
+	</div>
+
+	<a href="{% url "profile" %}"><button class="back-btn"> <i class="fas fa-long-arrow-alt-left"></i> Back</button></a>
+
+	<script type="text/javascript" src="{% static 'javascript/product.js' %}"></script>
+</body>
+</html>

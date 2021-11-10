@@ -1,0 +1,532 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+    <!-- Bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+{% endblock %}
+
+{% block link2 %} 
+<style>
+
+.alert{
+	position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+	border-radius: .25rem;
+	color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb
+}
+/*Product Description*/
+.product-description-container{
+	min-width: 650px;
+	max-width: 1300px;
+	margin: 180px auto 70px auto; 
+	background: white;
+	border-radius: 30px;
+	box-shadow: 6px 6px 10px  rgba(0,0,0,0.4);
+	font-family: "Open sans",sans-serif;
+}
+
+.product-row{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	margin-bottom: 30px; 
+}
+
+
+.product-row .product-col:nth-child(1){
+	flex-basis: 40%;
+}
+.product-row .product-col:nth-child(2){
+	flex-basis: 60%;
+}
+
+.product{
+	display: flex;
+}
+
+.product-image{
+	padding: 30px;
+	height: 400px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.product-image img{
+	max-width: 100%;
+	max-height: 100%;
+}
+.product-info{
+	padding: 30px;
+	display: flex;
+	flex-direction:column;
+	justify-content: space-around;
+}
+
+.product-h3{
+	margin: 10px 10px 10px 0;
+	color: gray;
+	margin-left: auto;
+}
+.red{
+	background: red;
+}
+
+.blue{
+	background: blue;
+}
+
+.tab-container{
+	width: 100%;
+	height: 250px;
+	position:  relative;
+	/*margin: 20px auto;*/
+	overflow: hidden;
+}
+
+.button-box2{
+	display: flex;
+	border-bottom: 1px solid #ccc;
+}
+
+.button-box2 button{
+	background: transparent;
+	border:none;
+	outline: none;
+	cursor: pointer;
+	padding: 14px 16px;
+	margin-right: 50px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.button-box2 .tab{
+	margin-right: 20px;
+}
+
+.button-box2 button:hover .tab{
+	color: #ff7846;
+}
+
+.tab-content{
+	margin: 0 auto;
+}
+
+.tab-content{
+	font-size:15px;
+	padding: 15px 0;
+	text-align: justify;
+	position: absolute;
+	transform:translateX(2500%);
+	transition: 0.3s;
+}
+
+.buttons{
+	display: flex;
+	justify-content: space-between;
+	align-items:center;
+}
+
+.buttons button{
+	width: 180px;
+	height: 50px;
+	border-radius: 40px;
+	background: transparent;
+	border: 3px solid #592998;
+	font-size:15px;
+	transition: .2s;
+}
+
+.buttons>button>.fas{
+	margin-right: 15px;
+}
+
+.buttons button:hover{
+	background: #592998;
+	color: white;
+}
+
+.reply{
+	display: none;
+}
+
+#tab-content1{
+	transform:translateX(0px);
+}
+
+#btn1{
+	color: #ff7846;
+}
+
+
+/*Comment-Section*/
+.comment-row{
+	display: flex;
+	align-items:center;
+	justify-content: space-around;
+	background: rgb(251,251,251);
+	background: radial-gradient(circle, rgba(251,251,251,1) 0%, rgba(232,226,245,1) 100%);
+	border-radius: 0px 0px 30px 30px;	
+}
+
+.comment-row .comment-col:nth-child(1){
+	flex-basis: 60%;
+}
+.comment-row .comment-col:nth-child(2){
+	flex-basis: 40%;
+}
+
+.comment-display{
+	height: 400px;
+	padding-left: 50px; 
+	padding-right: 20px;
+	overflow-y: auto;
+}
+
+.comment{
+	margin: 40px 15px;
+	background: white;
+	min-height: 60px;
+	max-width: 680px;
+	display:  flex;
+	border-radius: 25px;
+	box-shadow: 6px 6px 10px  rgba(0,0,0,0.2);
+}
+
+.comment .user-image{
+	display: flex;
+	align-items:center;
+}
+
+.comment .user-image img{
+	width: 45px;
+	height: 45px;
+	object-fit: cover;
+	border-radius:50%;
+	padding: 5px;
+}
+
+.comment .user-comment{
+	width:100%;
+	padding: 15px;
+}
+
+.comment .user-comment span{
+	font-size: 13px;
+	color: gray;
+}
+
+.comment .user-comment span input{
+	float: right;
+	height: 30px;
+	width: 90px;
+	border-radius: 10px;
+	border: 1px solid #592998;
+	color: white;
+	background: #592998;
+}
+
+.comment .user-image{
+	padding: 10px 20px;
+	text-align: justify;
+}
+
+
+.reply{
+	margin: 40px 15px 40px 50px;
+	background: white;
+	min-height: 60px;
+	max-width: 680px;
+	display:  flex;
+	border-radius: 25px;
+	box-shadow: 6px 6px 10px  rgba(0,0,0,0.2);
+}
+
+.reply .user-image{
+	display: flex;
+	align-items:center;
+}
+
+.reply .user-image img{
+	width: 45px;
+	height: 45px;
+	object-fit: cover;
+	border-radius:50%;
+	padding: 5px;
+}
+
+.reply .user-comment{
+	width:100%;
+	padding: 15px;
+}
+
+.reply .user-comment span{
+	font-size: 13px;
+	color: gray;
+}
+
+.reply .user-comment .replied,  .comment .user-comment .replied{
+	float: right;
+}
+
+.reply .user-comment span input{
+	float: right;
+	height: 30px;
+	width: 90px;
+	border-radius: 10px;
+	border: 1px solid #592998;
+	color: white;
+	background: #592998;
+}
+
+.reply .user-image{
+	padding: 10px 20px;
+	text-align: justify;
+}
+
+
+
+
+
+
+.comment-box{
+	width: 550px;
+	margin: 10px 20px 10px 50px;
+	height: 50px;
+	border-radius:30px;
+	border:1px solid gray;
+	outline: none;
+	padding: 0 20px;
+}
+.reply-box{
+	width: 400px;
+	margin: 5px 20px 5px 75px;
+	height: 40px;
+	border-radius:30px;
+	border:1px solid gray;
+	outline: none;
+	padding: 0 20px;
+}
+
+.comment-btn{
+	height: 52px;
+	width: 100px;
+	border: 1px solid #592998;
+	border-radius: 30px;
+	background:  #592998;
+	color: white;
+	font-size: 17px;
+}
+
+.reply-btn{
+	height: 40px;
+	width: 100px;
+	border: 1px solid #592998;
+	border-radius: 30px;
+	background:  #592998;
+	color: white;
+	font-size: 17px;
+}
+
+.comment-image{
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+.comment-image img{
+	max-width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 0 0 30px 0;
+}
+
+@media screen and (max-width: 1000px){
+	.product-row{
+		max-width: 1000px;
+		flex-direction: column;
+	}
+	.product-image{
+		padding: 20px;
+		margin-top:20px;
+		height: 300px;
+	}
+	.comment-image{
+		display: none;
+	}
+	.comment-box{
+		width: 350px;
+	}
+	.reply-box{
+		width: 200px;
+	}
+}
+
+
+
+@media screen and (max-width: 600px){
+	.product-row{
+		max-width: 600px;
+		flex-direction: column;
+		margin: auto;
+	}
+	.product-image{
+		padding: 20px;
+		margin-top:20px;
+		height: 200px;
+	}
+	.product-info{
+		padding: 60px;
+	}
+	.comment-image{
+		display: none;
+	}
+}
+</style>
+
+{% endblock %}
+
+
+{% block Description2 %}
+
+<div class="product-description-container">
+	{% if messages %}
+	{% for message in messages %}
+	  <div class="alert alert-{{ message.tags }}">
+		{{ message }}
+	  </div>
+	{% endfor %}
+ 	{% endif %}
+    <div class="product-row">
+        <div class="product-col product-image">
+            <img src="{{object.img.url}}">
+        </div>
+        <div class="product-col product-info">
+            <div class="product">
+                <h1 class="product-h1">{{object.name}}</h1>
+                <h3 class="product-h3">{{object.category}}</h3>
+            </div>
+            <!-- <h3 class="product-h3">Negotiable</h3> -->
+            <h2 class="product-h2">Rs.{{object.price}}</h2>
+            <div class="product-more-info">
+                <div class="tab-container">
+                    <div class="button-box2">
+						<button id="btn1" onclick="openDes()"><i class="fas fa-sticky-note tab"></i> Description</button>
+						{% if request.user.is_authenticated %}
+						<button id="btn2" onclick="openInfo()"><i class="fas fa-info-circle tab"></i>Seller-Informations</button>
+						{% endif %}
+                    </div>
+                    <div id="tab-content1" class="tab-content">
+                        <p>{{object.description}}</p>
+                    </div>
+                    <div id="tab-content2" class="tab-content">
+                        <div>
+                            <ul>
+                                <li><strong>Seller's Name:</strong> {{object.user}}</li>
+                                <li><strong>Seller's Email:</strong> {{object.user.profile.email}}</li>
+                                <li><strong>Seller's Phone Number:</strong> {{object.user.profile.phone_no}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="buttons">{% if request.user.is_authenticated %}
+				<a href="{{object.get_add_to_whishlist_url}}"><button><i class="fas fa-heart"></i> &nbsp;&nbsp; Add to WishList</button></a>
+					{% if object.user == user %}
+                <a href="{% url 'sell-detail' object.pk %}"><button><i class="fas fa-edit"></i>  &nbsp;&nbsp; Update</button></a>
+				<a href="{% url 'sell-detail' object.pk %}"><button><i class="fas fa-trash-alt"></i>  &nbsp;&nbsp;Delete</button></a>
+					{%endif%}
+					{%endif%}
+            </div>
+        </div>
+    </div>
+	{% if showcommentbox %}
+    <div class="comment-row">
+        <div class="comment-col comment-section">
+            <div class="comment-display">
+                {% if comments %}
+                {% for c in comments %}
+                <div class="comment">
+                    {% if c.reply is None %}
+                    <div class="user-image">
+                        <img src={{c.user.profile.image.url}}>
+                    </div>
+                    <div class="user-comment">
+						<span>{{c.user}}</span><br>
+                        {{c.content}}<br>
+						<span>{{c.timestamp|timesince}} ago</span>
+						<span class="replied">Commented</span> 
+                    </div>
+                    {% endif %}
+                </div>
+                {% for reply in replies %}
+                {% if reply.reply.id == c.id %}
+                    <div class="reply">
+                        <div class="user-image">
+                            <img src={{reply.user.profile.image.url}}>
+                        </div>
+                        <div class="user-comment">
+							<span>{{reply.user}}</span><br>
+                            {{reply.content}}<br>
+							<span>{{c.timestamp|timesince}} ago</span>
+							<span class="replied">Replied</span> 
+						</div>
+					</div>
+                {% endif %}
+                {% endfor %}
+				<form action='' method='POST'>
+					{% csrf_token %}
+						<input type="text" placeholder="Reply to the comment" class="reply-box" name="comment-content">
+						<input type='hidden' name='Commentid' value='{{c.id}}'>
+						<input type="submit" name="Reply" value="Reply" class="reply-btn"></input>
+				</form>
+				{% endfor %}
+				{% endif %}
+			</div>
+			
+            <div class="comment-write">
+                <form action='' method='POST'>
+                {% csrf_token %}
+                    <input type="text" placeholder="Write a comment... (Your comments are only visible to you and the product's owner)" class="comment-box" name="comment-content">
+                    <input type="submit" name="Comment" value="Comment" class="comment-btn"></input>
+                </form>
+            </div>
+        </div>
+        <div class="comment-col comment-image">
+            <img src="{% static 'image/comment.png' %}">
+        </div>
+    </div>
+	{% endif %}
+</div>
+
+<script type="text/javascript">
+    var t_content1=document.getElementById('tab-content1');
+    var t_content2=document.getElementById('tab-content2')
+    var btn1=document.getElementById('btn1');
+    var btn2=document.getElementById('btn2');
+
+    function openDes(){
+        t_content1.style.transform="translateX(0)";
+        t_content2.style.transform="translateX(2500%)";
+        btn1.style.color="#ff7846";
+        btn2.style.color="#000";
+        t_content1.style.transitionDelay="0.3s";
+        t_content2.style.transitionDelay="0s";
+    }
+
+    function openInfo(){
+        t_content1.style.transform="translateX(2500%)";
+        t_content2.style.transform="translateX(0)";
+        btn2.style.color="#ff7846";
+        btn1.style.color="#000";
+        t_content1.style.transitionDelay="0s";
+        t_content2.style.transitionDelay="0.3s";
+    }
+</script>
+
+{% endblock %}

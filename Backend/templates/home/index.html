@@ -1,0 +1,409 @@
+{% extends 'base.html' %} {% load static %} {% block title %} GaaKU - Get
+Anything at KU {% endblock %} {% block bar %}
+<li class="menu-icon"><i class="fas fa-bars"></i></li>
+{% endblock %} {% block body %} {% block notif-update %}
+<!--Notification Section-->
+<div class="notification-container">
+  <div class="button-box">
+    <div id="change-btn"></div>
+    {% if newNotif %}
+    <button
+      type="button"
+      class="toggle-btn notification-btn"
+      style="color: white"
+    >
+      <a href="{% url 'notification' %}">Notifications*</a>
+    </button>
+    {% else %}
+    <button
+      type="button"
+      class="toggle-btn notification-btn"
+      style="color: white"
+    >
+      Notifications
+    </button>
+    {% endif %}
+
+    <button type="button" class="toggle-btn update-btn">Updates</button>
+  </div>
+  <div id="notification" class="group">
+    {% if lookfors %} {% for lf in lookfors %}
+    <div class="group-section">
+      <a href='{% url "pdescription" lf.id %}'>
+        {{ lf.user }} added a new product {{lf.name}} that you've been looking
+        for. Check it out! </a
+      ><br />
+    </div>
+    {% endfor %} {% endif %} {% if notifs %} {% for n in notifs %}
+    <div class="group-section">
+      <a href='{% url "pdescription" n.post.id %}'>
+        {% if n.comment.reply %} {{n.user}} replied to your comment on
+        {{n.post.name}} post {% else %} {{n.user}} commented on your
+        {{n.post.name}} post {% endif %}
+      </a>
+      <br />
+      <span>{{n.comment.timestamp | timesince}} ago</span>
+    </div>
+    {% endfor %} {% endif %}
+  </div>
+
+  <div id="updates" class="group">
+    {% if updates %} {% for u in updates %}
+    <div class="group-section">
+      <a href='{% url "pdescription" u.id %}'>
+        {{ u.user }} added a new product {{u.name}}. Check it out! </a
+      ><br />
+    </div>
+    {% endfor %} {% endif %}
+  </div>
+</div>
+{% endblock %}
+<!-- Cover Section -->
+<div class="cover-container">
+  <div class="flexbox padding">
+    <div class="col2 text-alignment">
+      <h1 class="cover-title">Focused for the First Years</h1>
+      <p class="cover-text">
+        Get good qualtity drafters straight from the hands from your trusty
+        seniors and make your drawing classes easy and interesting.
+      </p>
+      <div class="view-btn">
+        <a href="/store/search/?q=drafter" class="button" id="view"
+          >View More <i class="fa fa-angle-right" aria-hidden="true"></i
+        ></a>
+      </div>
+    </div>
+    <div class="col2 image-scroll">
+      <img src="{% static 'image/Drafter.png' %}" class="cover-image first" />
+      <img src="{% static 'image/Electronics.png' %}" class="cover-image" />
+      <img
+        src="{% static 'image/Homes and Furniture.png' %}"
+        class="cover-image"
+      />
+      <img src="{% static 'image/Drafter.png' %}" class="cover-image" />
+      <img
+        src="{% static 'image/Education Materials.png' %}"
+        class="cover-image"
+      />
+      <img
+        src="{% static 'image/Homes and Furniture.png' %}"
+        class="cover-image"
+      />
+    </div>
+  </div>
+</div>
+
+<!-- Scrolling Section -->
+<div class="scrolling-container">
+  <div class="flexbox content-manipulation">
+    <div class="col8 left scroll-button">
+      <img src="{% static 'image/Scrolling-left.png' %}" />
+    </div>
+    <div class="col8 circle circle-active">
+      <img src="{% static 'image/Drafter-circle.png'%}" />
+    </div>
+    <div class="col8 circle">
+      <img src="{% static 'image/Electronics-circle.png'%}" />
+    </div>
+    <div class="col8 circle">
+      <img src="{% static 'image/Furniture-circle.png'%}" />
+    </div>
+    <div class="col8 circle">
+      <img src="{% static 'image/Musical-circle.png'%}" />
+    </div>
+    <div class="col8 circle">
+      <img src="{% static 'image/books-circle.png'%}" />
+    </div>
+    <div class="col8 circle">
+      <img src="{% static 'image/Shoes-circle.png'%}" />
+    </div>
+    <div class="col8 right scroll-button">
+      <img src="{% static 'image/Scrolling-right.png'%}" />
+    </div>
+  </div>
+</div>
+
+<!--New Arrivals-->
+<div class="new_arrival_container">
+  <div class="new-arrival">
+    <img src="{% static 'image/Arrival.png' %}" class="image" />
+  </div>
+  <ul id="autoWidth" class="cs-hidden">
+    {% for product in products %}
+    <li class="item-a">
+      <div class="product-card">
+        <div class="badge">New</div>
+        <div class="product-tumb">
+          <img src="{{product.img.url}}" alt="" class="model" />
+        </div>
+        <div class="product-details">
+          <span class="product-catagory">{{product.category}}</span>
+          <h4><a href="{{ product.get_absolute_url }}">{{product.name}}</a></h4>
+          <div class="product-bottom-details">
+            <div class="product-price">Rs.{{product.price}}</div>
+            <div class="product-links">
+              <a href=""><i class="fa fa-heart"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<!--Ad Section-------------------->
+<div class="ad-wrapper">
+  <div class="ad-container">
+    <div id="content1" class="content">
+      <div class="ad-row">
+        <div class="ad-col2">
+          <h1 class="ad-title">In The Need Of Any Luggages</h1>
+          <p>
+            Your Semester Trip in coming soon and out of luggages. Choose from
+            variety of different options and get you desired luggage now in a
+            favourable price.
+          </p>
+          <a href="{% url 'category' 'Other Accessories' %}" class="ad-btn1"
+            >Explore Now<i class="fas fa-arrow-right"></i
+          ></a>
+        </div>
+        <div class="ad-col2">
+          <img src="{% static 'image/4.png' %}" />
+        </div>
+      </div>
+    </div>
+    <div id="content2" class="content">
+      <div class="ad-row">
+        <div class="ad-col2">
+          <h1 class="ad-title">
+            Need To Furnish Your New Room Or Sell Your Furnitures
+          </h1>
+          <p>
+            Have you recently rented a room or are you leaving a room annd both
+            of you are looking for buyer or seller. Then find your perfect buyer
+            or perfect seller here. View products now.
+          </p>
+          <a href="{% url 'category' 'Homes and Furnitures' %}" class="ad-btn1"
+            >Explore Now<i class="fas fa-arrow-right"></i
+          ></a>
+        </div>
+        <div class="ad-col2">
+          <img src="{% static 'image/5.png' %}" />
+        </div>
+      </div>
+    </div>
+    <div id="content3" class="content">
+      <div class="ad-row">
+        <div class="ad-col2">
+          <h1 class="ad-title">Searching for Electrical Appliances</h1>
+          <p>
+            Searching for any electrical appliances like Boiler or Heater. Find
+            your desired items here in a favourable price. Shop now.
+          </p>
+          <a href="{% url 'category' 'Electronics' %}" class="ad-btn1"
+            >Explore Now<i class="fas fa-arrow-right"></i
+          ></a>
+        </div>
+        <div class="ad-col2">
+          <img src="{% static 'image/6.png' %}" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- /*Featured products*/ -->
+
+<div class="small-container">
+  <div class="ribbon">
+    <img
+      src="{% static 'image/kissclipart-bookmark-ribbon-c34c991849065c6a.png' %}"
+    />
+  </div>
+  <h2 class="choice-title">Featured Products</h2>
+  <div class="thumbnail-slider">
+    <div class="thumbnail-container">
+      {% for product in featuredProducts %}
+      <div class="thumbnail-items">
+        <div class="product-card">
+          <div class="badge">Hot</div>
+          <div class="product-tumb">
+            <img src="{{product.img.url}}" alt="" class="model" />
+          </div>
+          <div class="product-details">
+            <span class="product-catagory">{{product.category}}</span>
+            <h4>
+              <a href="{{ product.get_absolute_url }}">{{product.name}}</a>
+            </h4>
+            <div class="product-bottom-details">
+              <div class="product-price">Rs.{{product.price}}</div>
+              <div class="product-links">
+                <a href=""><i class="fa fa-heart"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="controls"></div>
+  </div>
+</div>
+
+<!-- /*Urgent Section */ -->
+<div class="new_arrival_container">
+  <div class="new-arrival">
+    <img
+      src="{% static 'image/Looking for Special offers.png' %}"
+      class="looking-image"
+    />
+  </div>
+  <ul id="autoWidth2" class="cs-hidden">
+    {% for product in negotiable %}
+    <li class="item-a">
+      <div class="product-card">
+        <div class="badge">Negotiable</div>
+        <div class="product-tumb">
+          <img src="{{product.img.url}}" alt="" class="model" />
+        </div>
+        <div class="product-details">
+          <span class="product-catagory">{{product.category}}</span>
+          <h4><a href="{{ product.get_absolute_url }}">{{product.name}}</a></h4>
+          <div class="product-bottom-details">
+            <div class="product-price">Rs.{{product.price}}</div>
+            <div class="product-links">
+              <a href=""><i class="fa fa-heart"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<!----Testimonials-->
+<section class="testimonials">
+  <div class="test-container">
+    <div class="test-title">
+      <h1>See what our customers have to say...</h1>
+    </div>
+    <div class="test-content">
+      <div class="test-slider">
+        <div class="slide active">
+          <p>
+            <i class="fas fa-quote-left"></i
+            ><br />{{testimonials.0.content}}<br />
+            <i class="fas fa-quote-right"></i>
+          </p>
+          <div class="slide-info">
+            <h3>
+              {{testimonials.0.user.first_name}}
+              {{testimonials.0.user.last_name}}
+            </h3>
+          </div>
+        </div>
+        <div class="slide">
+          <p>
+            <i class="fas fa-quote-left"></i
+            ><br />{{testimonials.1.content}}<br />
+            <i class="fas fa-quote-right"></i>
+          </p>
+          <div class="slide-info">
+            <h3>
+              {{testimonials.1.user.first_name}}
+              {{testimonials.1.user.last_name}}
+            </h3>
+          </div>
+        </div>
+        <div class="slide">
+          <p>
+            <i class="fas fa-quote-left"></i
+            ><br />{{testimonials.2.content}}<br />
+            <i class="fas fa-quote-right"></i>
+          </p>
+          <div class="slide-info">
+            <h3>
+              {{testimonials.2.user.first_name}}
+              {{testimonials.2.user.last_name}}
+            </h3>
+          </div>
+        </div>
+      </div>
+      <div class="test-indicator">
+        <img
+          src="{{testimonials.0.user.profile.image.url}}"
+          class="active"
+          data-id="0"
+        />
+        <img src="{{testimonials.1.user.profile.image.url}}" data-id="1" />
+        <img src="{{testimonials.2.user.profile.image.url}}" data-id="2" />
+      </div>
+    </div>
+  </div>
+</section>
+
+{% if request.user.is_authenticated %} {% if not subscribed %}
+<div class="subscribe-container">
+  <div class="sub-col1">
+    <h1>Keep Yourself Updated With Our Products</h1>
+    Subscribe Now To get Notify to Our Latest Entries.
+  </div>
+  <div class="sub-col2">
+    <a href="{% url 'subscribe-update' %}"
+      ><input type="submit" value="Subscribe" id="footer-email-btn"
+    /></a>
+  </div>
+</div>
+{% else %}
+<div class="subscribe-container">
+  <div class="sub-col1">
+    <h1>Dont want to get updates?</h1>
+    Unsubscribe to stop getting notifications
+  </div>
+  <div class="sub-col2">
+    <a href="{% url 'subscribe-update' %}"
+      ><input type="submit" value="Unsubscribe" id="footer-email-btn"
+    /></a>
+  </div>
+</div>
+{% endif %} {% else %}
+<div class="subscribe-container">
+  <div class="sub-col1">
+    <h1>Want to buy or sell something?</h1>
+    Start by making an account first.
+  </div>
+  <div class="sub-col2">
+    <a href="{% url 'login' %}"
+      ><button type="submit" value="Login" id="footer-email-btn">
+        Login
+      </button></a
+    >
+    <a href="{% url 'signup' %}"
+      ><button type="submit" value="Signup" id="footer-email-btn">
+        Signup
+      </button></a
+    >
+  </div>
+</div>
+{% endif %}
+
+<script
+  type="text/javascript"
+  src="{% static 'javascript/JQuery3.3.1.js' %}"
+></script>
+<script
+  type="text/javascript"
+  src="{% static 'javascript/lightslider.js' %}"
+></script>
+<script
+  type="text/javascript"
+  src="{% static 'javascript/lightsliderjs.js'%}"
+></script>
+<script type="text/javascript" src="{% static 'javascript/index.js'%}"></script>
+<script
+  type="text/javascript"
+  src="{% static 'javascript/basehtml.js' %}"
+></script>
+{% endblock %}

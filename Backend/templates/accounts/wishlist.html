@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% load static %} {% block products %}
+<div style="margin: auto">
+  <h2 class="userheader" style="font-size: 50px; font-style: italic">
+    {{view.kwargs.username}}'s Wishlist
+  </h2>
+</div>
+
+<div class="product-container">
+  {%for product in object_list %}
+
+    <li class="project__item">
+      <a href="#" class="project__link focus--box-shadow">
+        <div class="project__wrapper">
+          <div class="product-image">
+            <img src="/home/hritik/Desktop/Producr/guitar.jpeg"/>
+          <div class="product-name product-text">{{product.name}}</div>
+          <div class="product-price product-text">Rs.{{product.price}}</div>
+          <div class="product-date product-text">{{product.category}}</div>
+          <div class="product-negotiable product-text">Negoitaible</div>
+          <div class="product-info">
+            <i class="fas fa-ellipsis-h"></i>
+          </div>
+        </div>
+      </a>
+    </li>
+{% endfor %}
+</div>
+{% endblock products %}

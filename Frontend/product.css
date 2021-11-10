@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;1,300;1,400&display=swap');
+
+body{
+	margin:0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Montserrat',sans-serif;
+	background: url(1601026.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+a{
+	text-decoration: none;
+	color: white;
+}
+
+.wrapper{
+	max-width: 500px;
+	width: 100%;
+	background: white;
+	margin: 20px auto;
+	padding: 30px;
+	box-shadow: 6px 6px 6px rgba(0,0,0,0.5);
+	border-radius: 30px
+}
+
+#p-image{
+	margin:auto;
+	width: 100%;
+	height: 250px;
+	background: grey;
+	object-fit: cover;
+}
+
+#p-name{
+	width: 100%;
+	text-align: center;
+}
+
+.wrapper .registration-title{
+	font-size: 28px;
+	font-weight: bold;
+	margin-bottom: 45px;
+	color: #592998;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.wrapper .form{
+	width: 100%;
+}
+
+.wrapper .form .input-field{
+	margin-bottom: 15px;
+	display: flex;
+	align-items: center;
+}
+
+.wrapper .form .input-field label{
+	width: 200px;
+	color: #757575;
+	margin-right: 10px;
+	font-size:14px;
+}
+
+.wrapper .form .input-field .no-margin{
+	margin-right: 0px;
+}
+
+
+.wrapper .form .input-field .textarea,
+.wrapper .form .input-field .input{
+	width: 100%;
+	outline:none;
+	border: 1px solid #d5dbd9;
+	font-size: 15px;
+	padding: 8px 10px;
+	border-radius: 3px;
+	transition: all 0.3 ease;
+}
+
+.wrapper .form .input-field .textarea{
+	resize: none;
+	height: 125px;
+}
+.wrapper .form .input-field .custom-select{
+	position: relative;
+	width: 100%;
+	height: 37px;
+}
+
+.wrapper .form .input-field .custom-select select{
+	-webkit-appearance:none;
+	appearance:none;
+	border: 1px solid #d5dbd9;
+	width: 100%;
+	height: 100%;
+	padding: 8px 10px;
+	border-radius: 3px;
+	outline: none;
+}
+
+.wrapper .form .input-field .custom-select:before{
+	content: "";
+	position: absolute;
+	top: 12px;
+	right: 10px;
+	border:8px solid;
+	border-color: #d5dbd9 transparent transparent transparent;
+	pointer-events: none;
+}
+
+.wrapper .form .input-field .input:focus,
+.wrapper .form .input-field .textarea:focus,
+.wrapper .form .input-field select:focus{
+	border: 1px solid #592998;
+}
+
+.wrapper .form .input-field p{
+	font-size: 14px;
+	color: #757575;
+}
+
+.wrapper .form .input-field .check{
+	width: 15px;
+	height: 15px;
+	position: relative;
+	display: block;
+	cursor: pointer;
+}
+
+.wrapper .form .input-field .check input[type="checkbox"]{
+	position: absolute;
+	top:0;
+	left: 0;
+	opacity: 0;
+}
+.wrapper .form .input-field .check .checkmark{
+	width: 15px;
+	height: 15px;
+	border:1px solid #592998;
+	display: block;
+	position: relative;
+	/*background: #fec107;*/
+}
+
+.wrapper .form .input-field .check .checkmark:before{
+	content: "";
+	position: absolute;
+	top:2.5px;
+	left: 2px;
+	width: 5px;
+	height: 2px;
+	border: 2px solid;
+	border-color: transparent transparent #fff #fff;
+	transform: rotate(-45deg);
+	display: none;
+}
+
+.wrapper .form .input-field .check input[type="checkbox"]:checked~.checkmark{
+	background: #592998;
+}
+.wrapper .form .input-field .check input[type="checkbox"]:checked~.checkmark:before{
+	display: block;
+}
+
+.wrapper .form .input-field .reg-btn{
+	width:100%;
+	padding: 8px 10px;
+	font-size: 15px;
+	border: 0;
+	background: #592998;
+	color: white;
+	cursor:pointer;
+	border-radius: 3px;
+	outline: none;
+	transition: transform 0.2s ease;
+}
+
+.wrapper .form .input-field:last-child{
+	margin-bottom: 0;
+}
+
+.wrapper .form .input-field .reg-btn:hover, 
+.wrapper .form .input-field .alt-btn:hover,
+.back-btn:hover{
+	transform: scale(1.01);
+	background: #ffd658;
+}
+
+.wrapper .form .input-field  input[type="file"]{
+	display: none;
+}
+
+.wrapper .form .input-field .alt-btn{
+	color: white;
+	height: 60px;
+	width:100%;
+	background: #592998;
+	font-size: 20px;
+	display: flex;
+	justify-content: center;
+	align-items:center;
+	border-radius: 3px;
+	transition: transform 0.2s ease;
+}
+
+.wrapper .form .input-field .alt-btn .far{
+	margin-right: 10px;
+}
+
+.back-btn{
+	width: 100px;
+	margin: 20px;
+	padding: 8px 10px;
+	font-size: 15px;
+	border: 0;
+	background: #592998;
+	color: white;
+	cursor:pointer;
+	border-radius: 3px;
+	outline: none;
+	transition: transform 0.2s ease;
+	position: absolute;
+	top:0;
+	left: 0;
+	line-height: initial;
+}
+
+
+@media screen and (max-width: 420px){
+	.wrapper .form .input-field{
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	.wrapper .form .imput-field label{
+		margin-bottom: 5px;
+	}
+	.wrapper .form .imput-field .terms{
+		flex-direction: row;
+	}
+}

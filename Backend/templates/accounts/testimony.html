@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="wrapper" style="margin: 200px auto 100px auto">
+     {% if messages %} {% for message in messages %}
+  <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+  {% endfor %} {% endif %}
+			<div class="registration-title">
+				Give your valuable review
+			</div>
+            <form class="form" method='POST'>
+                    {% csrf_token %}
+				<div class="input-field">
+					<label>Testimony</label>
+					<input type="text" class="input" name='content' placeholder="please enter at least 25 words you lazy piece of shit"></input>
+				</div>
+                <div class="input-field">
+					<input type="submit"  value="Submit" class="reg-btn"></input>
+				</div>
+            </form>
+            <div class="input-field">
+					<a href="{% url 'home' %}"><input type="submit" value="No, thanks" class="reg-btn"></input></a>
+			</div>
+</div>
+{% endblock %}

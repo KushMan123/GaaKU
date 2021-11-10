@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Profile| GaaKU</title>
+	<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="profile.css">
+    <link rel="stylesheet" type="text/css" href="normalize.css">
+
+</head>
+<body>
+	<div class="wrapper">
+      <nav class="nav">
+        <ul class="nav__list" role="menubar">
+          <li class="nav__item nav__item--isActive">
+            <div class="tool-tip">
+            	<a
+	              href="#"
+	              class="nav__link focus--box-shadow"
+	              role="menuitem"
+	            >
+	            <i class="fas fa-home"></i>
+	            </a>
+	            <span class="tooltip-text">Home</span>
+            </div>
+          </li>
+          <li class="nav__item nav__item--isActive">
+            <div class="tool-tip">
+            	<a
+	              href="#"
+	              class="nav__link focus--box-shadow"
+	              role="menuitem"
+	            >
+	            <i class="fab fa-product-hunt"></i>
+	            </a>
+	            <span class="tooltip-text">Product</span>
+            </div>
+          </li>
+          <li class="nav__item nav__item--isActive">
+            <div class="tool-tip">
+            	<a
+	              href="#"
+	              class="nav__link focus--box-shadow"
+	              role="menuitem"
+	            >
+	            <i class="fas fa-question-circle"></i>
+	            </a>
+	            <span class="tooltip-text">About</span>
+            </div>
+          </li>
+          <li class="nav__item nav__item--isActive">
+            <div class="tool-tip">
+            	<a
+	              href="#"
+	              class="nav__link focus--box-shadow"
+	              role="menuitem"
+	            >
+	            <i class="fas fa-power-off"></i>
+	            </a>
+	            <span class="tooltip-text">Log-out</span>
+            </div>
+          </li>
+      </ul>
+  </nav>
+  <main class="main">
+    <header class="header">
+      <div class="header__wrapper">
+        <form action="" class="search">
+          <button class="search__button focus--box-shadow" type="submit">
+  			<i class="fas fa-search"></i>
+          </button>
+          <input
+            class="search__input focus--box-shadow"
+            type="text"
+            placeholder="Type to Search"
+          />
+        </form>
+        <div class="profile">
+          <button class="profile__button">
+            <span class="profile__name">Jessica</span>
+            <img
+              class="profile__img"
+              src="image/it.jpg"
+              alt="Profile picture"
+              loading="lazy"
+            />
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <section class="section" id="MyProducts">
+          <header class="section__header">
+            <h2 class="section__title">My Products</h2>
+            <div class="section__control">
+              <button
+                class="section__button section__button--painted focus--box-shadow"
+                type="button"
+                aria-label="Add New project"
+              >
+              <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </header>
+          <ul class="project">
+            <li class="project__item">
+              <a href="#" class="project__link focus--box-shadow">
+                <div class="project__wrapper">
+                 	<div class="product-image">
+                 		<img src="D:/Semester Projects/GAAKU Web/Project/images/1.jpeg">
+                 	</div>
+                 	<div class="product-name product-text">
+                 		Shoes
+                 	</div>
+                 	<div class="product-price product-text">
+                 		Rs.800
+                 	</div>
+                 	<div class="product-date product-text">
+                 		Other Accessories
+                 	</div>
+                 	<div class="product-negotiable product-text">
+                 		Negoitaible
+                 	</div>
+                 	<div class="product-info">
+                 		<i class="fas fa-ellipsis-h"></i>
+                 	</div>
+                </div>
+              </a>
+            </li>
+            <li class="project__item">
+              <a href="#" class="project__link focus--box-shadow">
+                <div class="project__wrapper">
+                 	<div class="product-image">
+                 		<img src="D:/Semester Projects/GAAKU Web/Project/images/2.jpg">
+                 	</div>
+                 	<div class="product-name product-text">
+                 		Guitar
+                 	</div>
+                 	<div class="product-price product-text">
+                 		Rs.4500
+                 	</div>
+                 	<div class="product-date product-text">
+                 		Other Accessories
+                 	</div>
+                 	<div class="product-negotiable product-text">
+                 		Negoitaible
+                 	</div>
+                 	<div class="product-info">
+                 		<i class="fas fa-ellipsis-h"></i>
+                 	</div>
+                </div>
+              </a>
+            </li>
+            <li class="project__item">
+              <a href="#" class="project__link focus--box-shadow">
+                <div class="project__wrapper">
+                 	<div class="product-image">
+                 		<img src="D:/Semester Projects/GAAKU Web/Project/images/3.jpg">
+                 	</div>
+                 	<div class="product-name product-text">
+                 		Flax Golden Tales
+                 	</div>
+                 	<div class="product-price product-text">
+                 		Rs.1000
+                 	</div>
+                 	<div class="product-date product-text">
+                 		Education Material
+                 	</div>
+                 	<div class="product-negotiable product-text">
+                 		Negoitaible
+                 	</div>
+                 	<div class="product-info">
+                 		<i class="fas fa-ellipsis-h"></i>
+                 	</div>
+                </div>
+              </a>
+            </li>
+            <li class="project__item">
+              <a href="#" class="project__link focus--box-shadow">
+                <div class="project__wrapper">
+                 	<div class="product-image">
+                 		<img src="D:/Semester Projects/GAAKU Web/Project/images/4.jpg">
+                 	</div>
+                 	<div class="product-name product-text">
+                 		Badminton Shuttle
+                 	</div>
+                 	<div class="product-price product-text">
+                 		Rs.1500
+                 	</div>
+                 	<div class="product-date product-text">
+                 		Sports
+                 	</div>
+                 	<div class="product-negotiable product-text">
+                 		Non-Negoitaible
+                 	</div>
+                 	<div class="product-info">
+                 		<i class="fas fa-ellipsis-h"></i>
+                 	</div>
+                </div>
+              </a>
+            </li>
+            <li class="project__item">
+              <a href="#" class="project__link focus--box-shadow">
+                <div class="project__wrapper">
+                 	<div class="product-image">
+                 		<img src="D:/Semester Projects/GAAKU Web/Project/images/20.jpg">
+                 	</div>
+                 	<div class="product-name product-text">
+                 		Chairs
+                 	</div>
+                 	<div class="product-price product-text">
+                 		Rs.15000
+                 	</div>
+                 	<div class="product-date product-text">
+                 		Homes and Furniture
+                 	</div>
+                 	<div class="product-negotiable product-text">
+                 		Negoitaible
+                 	</div>
+                 	<div class="product-info">
+                 		<i class="fas fa-ellipsis-h"></i>
+                 	</div>
+                </div>
+              </a>
+            </li>
+        </ul>
+    </section>
+
+    <section class="section" id="MyWishlist">
+          <header class="section__header">
+            <h2 class="section__title" >My WishList</h2>
+          </header>
+          <ul class="project">
+            <li class="project__item">
+              <a href="#" class="project__link focus--box-shadow">
+                <div class="project__wrapper">
+                 	<div class="product-image">
+                 		<img src="D:/Semester Projects/GAAKU Web/Project/images/1.jpeg">
+                 	</div>
+                 	<div class="product-name product-text">
+                 		Shoes
+                 	</div>
+                 	<div class="product-price product-text">
+                 		Rs.800
+                 	</div>
+                 	<div class="product-date product-text">
+                 		Other Accessories
+                 	</div>
+                 	<div class="product-negotiable product-text">
+                 		Negoitaible
+                 	</div>
+                 	<div class="product-info">
+                 		<i class="fas fa-ellipsis-h"></i>
+                 	</div>
+                </div>
+              </a>
+            </li>
+            <li class="project__item">
+              <a href="#" class="project__link focus--box-shadow">
+                <div class="project__wrapper">
+                 	<div class="product-image">
+                 		<img src="D:/Semester Projects/GAAKU Web/Project/images/2.jpg">
+                 	</div>
+                 	<div class="product-name product-text">
+                 		Guitar
+                 	</div>
+                 	<div class="product-price product-text">
+                 		Rs.4500
+                 	</div>
+                 	<div class="product-date product-text">
+                 		Other Accessories
+                 	</div>
+                 	<div class="product-negotiable product-text">
+                 		Negoitaible
+                 	</div>
+                 	<div class="product-info">
+                 		<i class="fas fa-ellipsis-h"></i>
+                 	</div>
+                </div>
+              </a>
+            </li>
+            <li class="project__item">
+              <a href="#" class="project__link focus--box-shadow">
+                <div class="project__wrapper">
+                 	<div class="product-image">
+                 		<img src="D:/Semester Projects/GAAKU Web/Project/images/3.jpg">
+                 	</div>
+                 	<div class="product-name product-text">
+                 		Flax Golden Tales
+                 	</div>
+                 	<div class="product-price product-text">
+                 		Rs.1000
+                 	</div>
+                 	<div class="product-date product-text">
+                 		Education Material
+                 	</div>
+                 	<div class="product-negotiable product-text">
+                 		Negoitaible
+                 	</div>
+                 	<div class="product-info">
+                 		<i class="fas fa-ellipsis-h"></i>
+                 	</div>
+                </div>
+              </a>
+            </li>
+            <li class="project__item">
+              <a href="#" class="project__link focus--box-shadow">
+                <div class="project__wrapper">
+                 	<div class="product-image">
+                 		<img src="D:/Semester Projects/GAAKU Web/Project/images/4.jpg">
+                 	</div>
+                 	<div class="product-name product-text">
+                 		Badminton Shuttle
+                 	</div>
+                 	<div class="product-price product-text">
+                 		Rs.1500
+                 	</div>
+                 	<div class="product-date product-text">
+                 		Sports
+                 	</div>
+                 	<div class="product-negotiable product-text">
+                 		Non-Negoitaible
+                 	</div>
+                 	<div class="product-info">
+                 		<i class="fas fa-ellipsis-h"></i>
+                 	</div>
+                </div>
+              </a>
+            </li>
+            <li class="project__item">
+              <a href="#" class="project__link focus--box-shadow">
+                <div class="project__wrapper">
+                 	<div class="product-image">
+                 		<img src="D:/Semester Projects/GAAKU Web/Project/images/20.jpg">
+                 	</div>
+                 	<div class="product-name product-text">
+                 		Chairs
+                 	</div>
+                 	<div class="product-price product-text">
+                 		Rs.15000
+                 	</div>
+                 	<div class="product-date product-text">
+                 		Homes and Furniture
+                 	</div>
+                 	<div class="product-negotiable product-text">
+                 		Negoitaible
+                 	</div>
+                 	<div class="product-info">
+                 		<i class="fas fa-ellipsis-h"></i>
+                 	</div>
+                </div>
+              </a>
+            </li>
+        </ul>
+    </section>
+
+    <section class="section" id="MyHistory">
+          <header class="section__header">
+            <h2 class="section__title">My History</h2>
+          </header>
+          <ul class="project">
+            <li class="project__item">
+              <a href="#" class="project__link focus--box-shadow">
+                <div class="project__wrapper history-section">
+                 	<p>You bought Product 1 from Seller 1</p>
+                </div>
+                <span>Time ago</span>
+              </a>
+            </li>
+            <li class="project__item">
+              <a href="#" class="project__link focus--box-shadow">
+                <div class="project__wrapper history-section">
+                 	<p>You sold Product 2 from Seller 1</p>
+                </div>
+                <span>Time ago</span>
+              </a>
+            </li>
+        </ul>
+    </section>
+</main>
+<aside class="aside">
+        <section class="section">
+        	<h1>My Profile</h1>
+          <div class="profile-main">
+            <button
+              class="profile-main__setting focus--box-shadow"
+              type="button"
+            >
+              <img
+                class="profile-main__photo"
+                src="image/it.jpg"
+                alt="Profile photo"
+              />
+            </button>
+            <h1 class="profile-main__name">Jessica <i class="far fa-edit"></i> </h1>
+            <div class="profile-main__name">Jessica Shakya</div>
+            <div class="profile-main__name">jessica.shakya@gmail.com</div>
+            <div class="profile-main__name">9843695670</div>
+          </div>
+          <ul class="statistics">
+            <li class="statistics__entry">
+              <a class="statistics__entry-description" href="#MyProducts">My Products</a
+              ><span class="statistics__entry-quantity">5</span>
+            </li>
+            <li class="statistics__entry">
+              <a class="statistics__entry-description" href="#MyWishlist">My WishList</a
+              ><span class="statistics__entry-quantity">3</span>
+            </li>
+            <li class="statistics__entry">
+              <a class="statistics__entry-description" href="#MyHistory">History</a>
+            </li>
+          </ul>
+          <div class="banner" style="background-image: url('image/81744.jpg');">
+            <h3 class="banner__title">Subscribe to Get Updates</h3>
+            <p class="banner__description">Get Updated with GaaKU</p>
+            <button class="banner__button" type="button">
+              Subscribe
+            </button>
+          </div>
+        </section>
+      </aside>
+      </div>
+
+	</div>
+	<div class="modal">
+		<div class="add-wrapper">
+			<i class="fas fa-times"></i>
+			<div class="registration-title">
+				Your Profile Information
+			</div>
+			<form class="form">
+				<div class="input-field">
+					<label>Username</label>
+					<input type="text" class="input"></input>
+				</div>
+				<div class="input-field">
+					<label>Your Name</label>
+					<input type="text" class="input"></input>
+				</div>
+				<div class="input-field">
+					<label>Phone Number</label>
+					<input type="text"  class="input"></input>
+				</div>
+				<div class="input-field">
+					<label>Email</label>
+					<input type="email"  class="input"></input>
+				</div>
+				<div class="input-field">
+					<label>Product Image</label>
+					<input type="file" id="file" accept="image/*"></input><br>
+					<label for="file" class="alt-btn"> <i class="far fa-image"></i>Choose a Photo</label>
+					<!-- <img src="#" id="product-image" alt="Image" height=200 width=100> -->
+				</div>
+				<div class="input-field">
+					<img src="https://omegamma.com.au/wp-content/uploads/2017/04/default-image-720x530.jpg" alt="p-image" id="p-image">
+				</div>
+				<div class="input-field">
+					<label id="p-name">Image</label>
+				</div>
+				<div class="input-field">
+					<input type="submit"  value="Update" class="reg-btn"></input>
+				</div>
+			</form>
+		</div>
+    </div>
+      
+<script type="text/javascript" src="profile.js"></script>
+</body>
+</html>
